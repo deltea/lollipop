@@ -4,28 +4,74 @@ Screen {
 
 .main {
   layout: grid;
-  grid-size: 3 5;
+  grid-size: 4 6;
   height: 100%;
   # padding: 0 1;
   # grid-gutter: 0 1;
 }
 
-.box {
+Box, FolderTree, Tracks, NowPlaying {
   height: 100%;
   border: round $surface-lighten-3;
+  background: $background;
+
+  &:focus {
+    background: transparent;
+    border: round $accent;
+  }
+}
+
+NowPlaying {
+  layout: vertical;
+  column-span: 4;
+  row-span: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .sidebar {
   column-span: 1;
-  row-span: 4;
+  row-span: 5;
 }
 
-.library {
-  column-span: 2;
-  row-span: 4;
-}
-
-.playing {
+.tracks {
   column-span: 3;
-  row-span: 1;
+  row-span: 5;
+}
+
+Bar > .bar--bar {
+  color: $accent;
+  width: 100%;
+}
+
+Bar > .bar--complete {
+  color: $accent;
+  width: 100%;
+}
+
+.playing-info {
+  layout: horizontal;
+  width: 100%;
+  align: center middle;
+  color: $primary;
+}
+
+.playing-controls {
+  layout: horizontal;
+  width: 100%;
+  align: center middle;
+
+  & > Label {
+    margin: 0 2;
+  }
+}
+
+.playing-bar {
+  layout: horizontal;
+  align: center middle;
+  width: 100%;
+
+  & > Label {
+    margin: 0 1;
+  }
 }
