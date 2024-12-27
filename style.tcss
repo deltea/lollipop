@@ -1,0 +1,31 @@
+Screen {
+  # Main css
+}
+
+.main {
+  layout: grid;
+  grid-size: 3 5;
+  height: 100%;
+  # padding: 0 1;
+  # grid-gutter: 0 1;
+}
+
+.box {
+  height: 100%;
+  border: round $surface-lighten-3;
+}
+
+.sidebar {
+  column-span: 1;
+  row-span: 4;
+}
+
+.library {
+  column-span: 2;
+  row-span: 4;
+}
+
+.playing {
+  column-span: 3;
+  row-span: 1;
+}
