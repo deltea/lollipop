@@ -4,12 +4,7 @@ from typing import Iterable
 from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.screen import Screen
-from textual.widgets import Footer, Static, ProgressBar, DirectoryTree, ListView, ListItem, Label
-
-class Box(Static, can_focus=True):
-  def __init__(self, title: str = "", *args, **kwargs) -> None:
-    super().__init__(*args, **kwargs)
-    self.border_title = title
+from textual.widgets import Footer, Static, ProgressBar, ListView, ListItem, Label
 
 class FolderTree(ListView):
   path: str | Path
