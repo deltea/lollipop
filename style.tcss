@@ -44,7 +44,7 @@ PlayBar {
   width: 100%;
 
   & > .track-name {
-    margin: 0 3;
+    margin: 0 1;
   }
 }
 

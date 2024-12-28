@@ -45,7 +45,6 @@ class Tracks(ListView):
     self.refresh()
     for i, path in enumerate(tracks, 1):
       self.append(ListItem(
-        Label(f"[b]{i}[/b]"),
         Label(path.name.removesuffix(path.suffix), classes="track-name"),
         classes="track"
       ))
