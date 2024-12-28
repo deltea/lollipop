@@ -1,7 +1,3 @@
-Screen {
-  # Main css
-}
-
 .main {
   layout: grid;
   grid-size: 4 6;
@@ -14,7 +10,7 @@ Footer {
   background: $background;
 }
 
-Box, FolderTree, Tracks, PlayBar {
+.box, FolderTree, Tracks, PlayBar {
   height: 100%;
   border: round $surface-lighten-3;
   background: $background;
@@ -33,7 +29,7 @@ PlayBar {
   height: 100%;
 }
 
-.sidebar {
+.folder-tree {
   column-span: 1;
   row-span: 5;
 }
