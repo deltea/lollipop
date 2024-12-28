@@ -10,7 +10,11 @@ Screen {
   # grid-gutter: 0 1;
 }
 
-Box, FolderTree, Tracks, NowPlaying {
+Footer {
+  background: $background;
+}
+
+Box, FolderTree, Tracks, PlayBar {
   height: 100%;
   border: round $surface-lighten-3;
   background: $background;
@@ -21,7 +25,7 @@ Box, FolderTree, Tracks, NowPlaying {
   }
 }
 
-NowPlaying {
+PlayBar {
   layout: vertical;
   column-span: 4;
   row-span: 1;
@@ -39,14 +43,26 @@ NowPlaying {
   row-span: 5;
 }
 
-Bar > .bar--bar {
-  color: $accent;
+.track {
+  layout: horizontal;
+  width: 100%;
+
+  & > .track-name {
+    margin: 0 3;
+  }
+}
+
+ProgressBar {
+  # background: $surface-lighten-3;
+  width: 50%;
+}
+
+Bar {
   width: 100%;
 }
 
-Bar > .bar--complete {
+Bar > .bar--bar, .bar--complete {
   color: $accent;
-  width: 100%;
 }
 
 .playing-info {
@@ -74,4 +90,8 @@ Bar > .bar--complete {
   & > Label {
     margin: 0 1;
   }
+}
+
+Toast {
+  padding: 1 1;
 }
