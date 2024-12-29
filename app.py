@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Iterable, List
 
-from textual.app import App, ComposeResult, RenderResult
+from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.reactive import reactive
 from textual.screen import Screen
@@ -53,6 +53,18 @@ class PlayBar(Static):
   def __init__(self, *args, **kwargs) -> None:
     super().__init__(*args, **kwargs)
 
+  def compose(self) -> ComposeResult:
+    with Static(classes="playing-info"):
+      yield Label("[b]Priestess[/b]")
+    with Static(classes="playing-bar"):
+      yield Label("1:10")
+      yield ProgressBar(total=100, show_eta=False, show_percentage=False)
+      yield Label("2:02")
+    with Static(classes="playing-controls"):
+      yield Label("shuffle")
+      yield Label("repeat")
+
+
 class NowPlaying(ListView):
   def __init__(self, title: str = "", *args, **kwargs) -> None:
     super().__init__(*args, **kwargs)
@@ -77,19 +89,10 @@ class LibraryScreen(Screen):
     yield Footer()
 
     with Static(classes="main"):
-      yield FolderTree("[b]directory[/b]", "/Users/leo/Music", classes="folder-tree")
+      yield FolderTree("[b]directory[/b]", "/Users/leo/Music")
       yield Tracks("[b]tracks[/b]", self.tracks, classes="tracks")
 
-      with PlayBar():
-        with Static(classes="playing-info"):
-          yield Label("[b]Priestess[/b]")
-        with Static(classes="playing-bar"):
-          yield Label("1:10")
-          yield ProgressBar(total=100, show_eta=False, show_percentage=False)
-          yield Label("2:02")
-        with Static(classes="playing-controls"):
-          yield Label("shuffle")
-          yield Label("repeat")
+      yield PlayBar()
 
   def update_tracks(self, path: str = "/Users/leo/Music/🌃 future funky city/"):
     self.tracks = list(Path(path).iterdir())
@@ -120,10 +123,13 @@ class NowPlayingScreen(Screen):
   def compose(self) -> ComposeResult:
     yield Footer()
 
-    with NowPlaying("[b]now playing[/b]", classes="box"):
-      yield ListItem(Label("Priestess"))
-      yield ListItem(Label("Aggressive Phonk"))
-      yield ListItem(Label("2:02"))
+    with Static(classes="now-playing"):
+      with NowPlaying("[b]now playing[/b]", classes="box"):
+        yield ListItem(Label("Priestess"))
+        yield ListItem(Label("Aggressive Phonk"))
+        yield ListItem(Label("2:02"))
+
+      yield PlayBar()
 
 
 # ---------- Main App ----------
